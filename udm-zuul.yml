@@ -4,14 +4,15 @@ server:
 spring: 
   profiles: dev
   application:
-    name: udm-zuul
+    name: udm-zuul-app
  
 eureka: 
   client: 
+    register-with-eureka: false
     service-url: 
       defaultZone: http://eureka7001.com:7001/eureka  
   instance:
-    instance-id: udm.zuul.com
+    instance-id: udm-zuul-ins
     prefer-ip-address: true 
  
  
@@ -22,6 +23,8 @@ zuul:
   routes: 
     mydept.serviceId: microservicecloud-dept
     mydept.path: /mydept/**
+    user-consumer.serviceId: udm-user-consumer-app
+    user-consumer.path: /uc/**
  
 info:
   app.name: atguigu-microcloud
